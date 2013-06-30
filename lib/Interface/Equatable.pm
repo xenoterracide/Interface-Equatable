@@ -70,6 +70,9 @@ requires('equals');
 
 =head1 DESCRIPTION
 
+Defines a generalized method that a class implements to create a
+method for determining equality of instances.
+
 =method equals
 
 	my $bool = $obj0->equals( $obj1 );
