@@ -1,0 +1,5 @@
+/Interface-Equatable*
+.build
+*.swp
+*.swo
+/*.conf
