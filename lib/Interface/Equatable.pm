@@ -73,20 +73,52 @@ requires('equals');
 Defines a generalized method that a class implements to create a
 method for determining equality of instances.
 
+
 =method equals
 
 	my $bool = $obj0->equals( $obj1 );
 
-The C<equals> method should return one of three boolean values: 1, 0, or
-undef. However, this should never be checked by a user of the API.
-A user should only check for true or false. The differences in values
-are only for implementers of the interface.
+The equals method implements an equivalence relation on object references
+and should return one of three boolean values: 1, 0, or undef. However,
+this should never be checked by a consumer of the API. A consumer should only
+check for true or false. The differences in values are only for implementers
+of the interface.
 
 	# NEVER DO THIS
 	if( $obj0->equals( $obj ) == 1 ) { ...
 
 	# ALWAYS DO THIS
 	if ( $obj0->equals( $obj ) ) { ...
+
+the contract for implmentors is as follows
+
+=over
+
+=item * It is reflexive
+
+for C<$x>, C<$x->equals( $x )> should return
+true.
+
+=item * It is symmetric
+
+For C<$x> and C<$y>, C<$x->equals( $y )> should return true if and only if
+C<$y->equals( $x )> returns true.
+
+=item * It is transitive
+
+for any objects C<$x>, C<$y>, and C<$z>, if
+C<$x->equals( $y )> returns true and C<$y->equals( $z )> returns true, then
+C<$x->equals( $z )> should return true.
+
+=item * It is consistent
+
+Invocations of C<$x.equals( $y )> consistently return true or consistently return
+false, provided no information used in equals comparisons on the objects is
+modified.
+
+=item * Undefined
+
+For any implementing object C<$x>, C<$x->equals( undef )> should return false.
 
 =over
 
