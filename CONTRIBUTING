@@ -2,20 +2,8 @@ Checklist
 
 (and a short version for the impatient):
 
-Branching:
-- git checkout origin/master -b my-feature-or-bug
-  - ensure that you start on the right branch `build/master` is the "default"
-    branch, but patches should be based on `master`. It's generally safe to
-    patch against `build/master` so long as you don't attempt to modify
-    generated files or add files that exist in `master` that are intentionally
-    stripped from the build.
-- do not include more than one feature or bug in your branch
-
 Commits:
-- make sure that the test suite passes after your commit. This distribution
-  is built with Dist::Zilla ensure that running `dzil test` passes. You are
-  responsible for ensuring that generated, hand written and author tests pass.
-- make sure that you have tests for the bug you are fixing
+
 - make commits of logical units
 - check for unnecessary whitespace with "git diff --check" before committing
 - do not check in commented out code or unneeded files
@@ -29,8 +17,13 @@ Commits:
   Your Name <you@example.com>" line to the commit message (or just use the
   option "-s" when committing) to confirm that you agree to the Developer's
   Certificate of Origin
+- make sure that you have tests for the bug you are fixing
+- make sure that the test suite passes after your commit. This distribution
+  is built with Dist::Zilla ensure that running `dzil test` passes. You are
+  responsible for ensuring that generated, hand written and author tests pass.
 
 Patch:
+
 - if you change, add, or remove any features or make some other user
   interface change, the associated documentation should be updated as well.
 - if your name is not writable in ASCII, make sure that you send the
